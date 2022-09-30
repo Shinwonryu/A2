@@ -1,0 +1,105 @@
+Script started on 2022-09-30 01:43:21-04:00
+
+0) You can use various search tools (grep) and cut all the newlines and replace them with spaces.
+
+1) Find the top 10 users who replied the most to other users (downloaded_tweets_extend_original_nolf.csv)
+
+]0;jeremiah@sjsu:~[jeremiah@sjsu ~]$ grep "@" downloaded_tweets_extend_original_nolf2.tsv | sort | uniq -c | sort -nr -k1 | head
+      1 1498768104767332354
+      1 1498767811052773385
+      1 1498767665279557633
+      1 1498766624479973387
+      1 1498765443229790214
+      1 1498765401005735949
+      1 1498765275684032521
+      1 1498765275205971969
+      1 1498758652559306756
+      1 1498758128510373888
+
+2) Find the top 10 users who got the most replies from other users (downloaded_tweets_extend_original_nolf.csv)
+
+
+]0;jeremiah@sjsu:~[jeremiah@sjsu ~]$ grep "type=replied_to" downloaded_tweets_extend_original_nolf2.tsv | sort | uniq -c | sort -nr -k1 | head
+      1 683774341721501696
+      1 683703028621377537
+      1 1520454449583509505
+      1 1520451336176902150
+      1 1520408831880179713
+      1 1520373686154444800
+      1 1520366318175805440
+      1 1520351202315476993
+      1 1520315728951488512
+      1 1520296390420680704
+
+3) Find the top 10 users who retweeted the most other tweets (downloaded_tweets_extend_nolf.csv)
+
+]0;jeremiah@sjsu:~[jeremiah@sjsu ~]$ grep "retweet" downloaded_tweets_extend_nolf2.tsv | sort | uniq -c | sort -nr -k1 | head
+      3 1494403799544475654
+      3 1482896525202182148
+      3 1481384452580380672
+      3 1481364611056259082
+      2 1520449322084712449
+      2 1518238717495889925
+      2 1518238702362939392
+      2 1514694049353056256
+      2 1505016125305888772
+      2 1501731166302388228
+
+5) Find the 30 hashtags used most frequently overall for anything (downloaded_tweets_extend_nolf.csv)
+
+]0;jeremiah@sjsu:~[jeremiah@sjsu ~]$ cut -f 4 downloaded_tweets_extend_nolf2.tsv | sort | uniq -c | sort -nr -k1 | head
+  20647 
+   1266 Ukraine
+    945 COVID19
+    870 LongCovid
+    833 "FBPE,FollowBackFriday"
+    320 Russia
+    305 BREAKING
+    257 PMQs
+    208 auspol
+    181 StandWithUkraine
+
+6) Find the 30 hashtags that got retweeted the most (downloaded_tweets_extend_nolf.csv)
+
+]0;jeremiah@sjsu:~[jeremiah@sjsu ~]$ grep "retweet" downloaded_tweets_extend_nolf2.tsv | cut -f 4 | sort | uniq -c | sort -nr -k1 | head
+  20641 
+   1166 Ukraine
+    811 LongCovid
+    782 COVID19
+    304 BREAKING
+    301 Russia
+    197 auspol
+    166 PMQs
+    161 Omicron
+    161 Mariupol
+
+7) Find the 30 hashtags that got replied the most (downloaded_tweets_extend_nolf.csv)
+
+]0;jeremiah@sjsu:~[jeremiah@sjsu ~]$ grep "type=replied_to" downloaded_tweets_extend_nolf2.tsv | cut -f 4 | sort | uniq -c | sort -nr -k1 | head
+    832 "FBPE,FollowBackFriday"
+    106 COVID19
+    106 BoycottATP
+    105 "PutinHitler,StandWithUkraine,PutinHitler,PutinWarCriminal,StopPutinNOW,RussiaSanctions,BoycottRussia"
+     69 ClimateCrisis
+     50 "J6T,J6TraitorSaysWhat"
+     49 LongCovid
+     42 Ottawa
+     35 DowningStreetParties
+     31 Ukraine
+
+8) Find the 30 hashtags that got quoted the most (downloaded_tweets_extend_nolf.csv)
+
+]0;jeremiah@sjsu:~[jeremiah@sjsu ~]$ grep "type=quote" downloaded_tweets_extend_nolf2.tsv | cut -f 4 | sort | uniq -c | sort -nr -k1 | head
+     28 COVID19
+     24 HousingCrisis
+     23 Ukraine
+     20 JimCrowGOP
+     20 COVID19AB
+     20 "BDS,FreePalestine"
+     16 VaccineSideEffects
+     16 ClimateCrisis
+     15 Putin
+     15 "ableg,covid19ab"
+]0;jeremiah@sjsu:~[jeremiah@sjsu ~]$ exit
+
+Script done on 2022-09-30 01:46:31-04:00
