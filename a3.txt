@@ -1,0 +1,30 @@
+Script started on 2022-10-10 01:51:08-04:00
+
+Produce clusters (groups of influence) by ranking the users who got replies by their number of replies:
+]0;jeremiah@sjsu:~[jeremiah@sjsu ~]$ grep "type=replied_to" downloaded_tweets_extend_nolf2.tsv | cut -f 6 | sort | uniq -c | sort -nr -k1 | head
+     95 1229752606714728454
+     35 308045021
+     35 19739126
+     31 29447428
+     29 956266072440635392
+     27 1387010761994682371
+     25 492736486
+     21 1373739644
+     21 1236324668640047105
+     20 804582780298412032
+
+Find the 30 most frequent hashtags in these largest clusters of replies you kept:
+]0;jeremiah@sjsu:~[jeremiah@sjsu ~]$ grep "type=quote" downloaded_tweets_extend_nolf2.tsv | cut -f 4 | sort | uniq -c | sort -nr -k1 | head
+     28 COVID19
+     24 HousingCrisis
+     23 Ukraine
+     20 JimCrowGOP
+     20 COVID19AB
+     20 "BDS,FreePalestine"
+     16 VaccineSideEffects
+     16 ClimateCrisis
+     15 Putin
+     15 "ableg,covid19ab"
+]0;jeremiah@sjsu:~[jeremiah@sjsu ~]$ exit
+
+Script done on 2022-10-10 01:53:26-04:00
