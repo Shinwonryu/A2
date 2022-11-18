@@ -1,0 +1,42 @@
+Script started on 2022-11-18 02:33:04-05:00
+
+Obtaining replies:
+]0;jeremiah@sjsu:~[jeremiah@sjsu ~]$ [K[jeremiah@sjsu ~]$ grep replied_to downloaded_tweets_extend_original_nolf2.tsv > downloaded_twweets_extend_original_nolf2_REPLIED.tsv
+]0;jeremiah@sjsu:~[jeremiah@sjsu ~]$ grep replied_to downloaded_tweets_extend_nolf2.tsv > downloaded_tweets_exteend_nolf2_REPLIED.tsv
+
+Obtaining retweets:
+]0;jeremiah@sjsu:~[jeremiah@sjsu ~]$ grep type=retweeted downloaded_tweets_extend_original_nolf2.tsv > downloadeed_tweets_extend_original_nolf2_RETWEETED.tsv
+]0;jeremiah@sjsu:~[jeremiah@sjsu ~]$ grep type=retweeted downloaded_tweets_extend_nolf2.tsv > downloaded_tweets__extend_nolf2_RETWEETED.tsv
+
+Obtaining influencers of replies:
+]0;jeremiah@sjsu:~[jeremiah@sjsu ~]$ awk -F "\t" '($2 != $6) {print $6}' downloaded_tweets_extend_original_nolf22_REPLIED.tsv | sort | uniq -c | sort -n -k 1 | awk '($1 >=3) {print $2}' > replyInfluencers.NNOBOTS.txt
+]0;jeremiah@sjsu:~[jeremiah@sjsu ~]$ awk -F "\t" '($2 != $6) {print $6}' downloaded_tweets_extend_nolf2_REPLIED..tsv | sort | uniq -c | sort -n -k 1 | awk '($1 >=3) {print $2}' >> replyInfluencers.NOBOTS.txxt
+
+Obtaining influencers of retweets:
+]0;jeremiah@sjsu:~[jeremiah@sjsu ~]$ awk -F "\t" '($2 != $6) {print $6}' downloaded_tweets_extend_original_nolf22_RETWEETED.tsv | sort | uniq -c | sort -n -k 1 | awk '($1 >=3) {print $2}' > retweetInfluenceers.NOBOTS.txt
+]0;jeremiah@sjsu:~[jeremiah@sjsu ~]$ awk -F "\t" '($2 != $6) {print $6}' downloaded_tweets_extend_nolf2_RETWEETEED.tsv | sort | uniq -c | sort -n -k 1 | awk '($1 >=3) {print $2}' >> retweetInfluencers.NOBOTTS.txt
+
+Separating reply tweet hashtags:
+]0;jeremiah@sjsu:~[jeremiah@sjsu ~]$ for INFL in `cat replyInfluencers.NOBOTS.txt` ; do  grep $INFL downloaded_ttweets_extend_original_nolf2_REPLIED.tsv  downloaded_tweets_extend_nolf2_REPLIED.tsv | awk -F  "\t"  '{print $4}' > inflReplyHashtags ; done
+
+Separating retweet hashtags:
+]0;jeremiah@sjsu:~[jeremiah@sjsu ~]$ for INFL in `cat retweetInfluencers.NOBOTS.txt` ; do  grep $INFL downloadedd_tweets_extend_original_nolf2_RETWEETED.tsv  downloaded_tweets_extend_nolf2_RETWEETED.tsv | aawk -F "\t"  '{print $4}' > inflRetweetHashtags  ; done
+
+Creating a file for each users hashtags (replies):
+]0;jeremiah@sjsu:~[jeremiah@sjsu ~]$ for INFL in `cat replyInfluencers.NOBOTS.txt` ; do  grep $INFL downloaded_ttweets_extend_original_nolf2_REPLIEDtest.tsv | awk -F "\t"  '{print $4}' > $INFL.hashtags ; doone
+
+Creating a file for each users hashtags (retweets):
+]0;jeremiah@sjsu:~[jeremiah@sjsu ~]$ for INFL in `cat retweetInfluencers.NOBOTS.txt` ; do  grep $INFL downloadedd_tweets_extend_original_nolf2_RETWEETED.tsv | awk -F "\t"  '{print $4}' > $INFL.hashtags ; doone
+
+Creating the table for replies:
+]0;jeremiah@sjsu:~[jeremiah@sjsu ~]$ for FILE in `ls`; do for HASHTAG in `cat $FILE`; do count_h_in_c=`grep $HASSHTAG $FILE | wc -l `; count_hashtags_in_C=`cat $FILE | wc -l`;count_H_entire_dataset=`grep $HHASHTAG downloaded_tweets_extend_original_nolf2_REPLIED.tsv | wc -l`; count_hashtags_entire_daataset=3928; echo “$HASHTAG $FILE $count_H_in_C $count_hashtags_in_C $count_H_entire_dataset $$count_hashtags_entire_dataset” ; done ; done | head -n 1000 > replies_hashtagStats.tsv
+
+Creating the table for retweets:
+]0;jeremiah@sjsu:~[jeremiah@sjsu ~]$ for FILE in `ls`; do for HASHTAG in `cat $FILE`; do count_h_in_c=`grep $HASSHTAG $FILE | wc -l `; count_hashtags_in_C=`cat $FILE | wc -l`;count_H_entire_dataset=`grep $HHASHTAG downloaded_tweets_extend_original_nolf2_RETWEETED.tsv | wc -l`; count_hashtags_entire__dataset=3928; echo “$HASHTAG $FILE $count_H_in_C $count_hashtags_in_C $count_H_entire_datasett $count_hashtags_entire_dataset” ; done ; done | head -n 1000 > replies_hashtagStats.tsv[A[APLIED.tsv | wc -l`; count_hashtags_entire_dataset=3928; echo “$HASHTAG $FILE $count_H_in_C $count_hashtags_in_C $count_H_entire_dataset $[2P[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[A[ATWEETED.tsv | wc -l`; count_hashtags_entire_dataset=3928; echo “$HASHTAG $FILE $count_H_in_C $count_hashtags_in_C $count_H_entire_dataset[2@ $[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[A[APLIED.tsv | wc -l`; count_hashtags_entire_dataset=3928; echo “$HASHTAG $FILE $count_H_in_C $count_hashtags_in_C $count_H_entire_dataset $[2P[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[A[ATWEETED.tsv | wc -l`; count_hashtags_entire_dataset=3928; echo “$HASHTAG $FILE $count_H_in_C $count_hashtags_in_C $count_H_entire_dataset[2@ $[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C\_hashtagStats.tsv\_hashtagStats.tsv[1P_hashtagStats.tsv[1P_hashtagStats.tsv[1P_hashtagStats.tsv[1P_hashtagStats.tsv[1P_hashtagStats.tsv[1P_hashtagStats.tsv[1P_hashtagStats.tsvt_hashtagStats.tsvw_hashtagStats.tsve_hashtagStats.tsve_hashtagStats.tsvt_hashtagStats.tsvs_hashtagStats.tsv[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+]0;jeremiah@sjsu:~[jeremiah@sjsu ~]$ exit
+
+do you see any hashtags that are "special" to some clusters, i.e. that occur often in a particular cluster of tweets, but less often in the tweets overall?
+
+yes, some hashtags (such as covid) appear much more.
+
+Script done on 2022-11-18 02:37:48-05:00
