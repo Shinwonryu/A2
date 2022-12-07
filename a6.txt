@@ -1,0 +1,388 @@
+Script started on 2022-12-06 20:11:07-05:00
+Consider the most influential users who got 3 replies or more (just replies, not retweets). Here are 3 questions:
+
+1- How many such influential users exist?
+]0;jeremiah@sjsu:~[jeremiah@sjsu ~]$ awk -F "\t" '($2 != $6) {print $6}' downloaded_tweets_extend_original_nolf2_REPLIED.tsv downloaded_tweets_extend_nolf2_REPLIED.tsv | sort | uniq -c | sort -nr -k 1 | less [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ks
+[?1049h[22;0;0t[?1h=     47 19739126
+     45 3453306553
+     29 956266072440635392
+     27 29447428
+     25 492736486
+     21 1236324668640047105
+     20 90732175
+     20 21525682
+     18 26347394
+     18 1238370241169616897
+     17 351120282
+     17 2245822809
+     17 19604599
+     17 1462548977367359490
+     17 1108565574
+     15 877968869138329601
+     14 756584190112591872
+     14 728273994
+     14 1384053916690571264
+     13 2809959174
+     13 27493883
+     13 1120633726478823425
+     12 94350709
+     12 48624704
+     12 262219168
+     12 1652541
+     12 15801906
+     12 155930120
+     12 1096205507348623360
+     11 95091601
+     11 90651198
+     11 879713479254528005
+     11 467726691
+     11 255812611
+     11 18831926
+     11 1573800344
+     11 1046608631968538624
+     10 64698201
+     10 3832
+     10 2962813893
+     10 225779417
+     10 1268223690480615424
+     10 1236816024281976833
+      9 977204844
+      9 938758536938557440
+      9 878284831
+      9 86626845
+      9 420617857
+:[K[K[?1l>[?1049l[23;0;0t
+[1]+  Stopped
+
+There are over 100 of these users.
+
+2- How many users replied to them in total?
+
+]0;jeremiah@sjsu:~[jeremiah@sjsu ~]$ for INFL in `cat replyInfluencers.NOBOTS.txt` ; do  grep $INFL downloaded_tweets_extend_original_nolf2_REPLIED.tsv  downloaded_tweets_extend_nolf2_REPLIED.tsv | awk -F "\tt"  '{print $1}' > userfile ; done
+]0;jeremiah@sjsu:~[jeremiah@sjsu ~]$ cat userfile
+downloaded_tweets_extend_original_nolf2_REPLIED.tsv:1481685943379804161
+downloaded_tweets_extend_original_nolf2_REPLIED.tsv:1481688688979587073
+downloaded_tweets_extend_original_nolf2_REPLIED.tsv:1484535615572033537
+downloaded_tweets_extend_original_nolf2_REPLIED.tsv:1486511078976548866
+downloaded_tweets_extend_original_nolf2_REPLIED.tsv:1486511874799669249
+downloaded_tweets_extend_original_nolf2_REPLIED.tsv:1488553243793838084
+downloaded_tweets_extend_original_nolf2_REPLIED.tsv:1489336565264523264
+downloaded_tweets_extend_original_nolf2_REPLIED.tsv:1489606853533261834
+downloaded_tweets_extend_original_nolf2_REPLIED.tsv:1489808781382987778
+downloaded_tweets_extend_original_nolf2_REPLIED.tsv:1490516853524992002
+downloaded_tweets_extend_original_nolf2_REPLIED.tsv:1493775729393209345
+downloaded_tweets_extend_original_nolf2_REPLIED.tsv:1499453734182690821
+downloaded_tweets_extend_nolf2_REPLIED.tsv:1507351064756039699
+downloaded_tweets_extend_nolf2_REPLIED.tsv:1507346785311895552
+downloaded_tweets_extend_nolf2_REPLIED.tsv:1499453734182690821
+downloaded_tweets_extend_nolf2_REPLIED.tsv:1498337894079115265
+downloaded_tweets_extend_nolf2_REPLIED.tsv:1493775729393209345
+downloaded_tweets_extend_nolf2_REPLIED.tsv:1493066154927169539
+downloaded_tweets_extend_nolf2_REPLIED.tsv:1490516853524992002
+downloaded_tweets_extend_nolf2_REPLIED.tsv:1489808781382987778
+downloaded_tweets_extend_nolf2_REPLIED.tsv:1489606853533261834
+downloaded_tweets_extend_nolf2_REPLIED.tsv:1489336565264523264
+downloaded_tweets_extend_nolf2_REPLIED.tsv:1488553243793838084
+downloaded_tweets_extend_nolf2_REPLIED.tsv:1484535615572033537
+downloaded_tweets_extend_nolf2_REPLIED.tsv:1481688688979587073
+downloaded_tweets_extend_nolf2_REPLIED.tsv:1481685943379804161
+downloaded_tweets_extend_nolf2_REPLIED.tsv:1498337894079115265
+downloaded_tweets_extend_nolf2_REPLIED.tsv:1493775729393209345
+downloaded_tweets_extend_nolf2_REPLIED.tsv:1493066154927169539
+downloaded_tweets_extend_nolf2_REPLIED.tsv:1490516853524992002
+downloaded_tweets_extend_nolf2_REPLIED.tsv:1489808781382987778
+downloaded_tweets_extend_nolf2_REPLIED.tsv:1489606853533261834
+downloaded_tweets_extend_nolf2_REPLIED.tsv:1489336565264523264
+downloaded_tweets_extend_nolf2_REPLIED.tsv:1488553243793838084
+downloaded_tweets_extend_nolf2_REPLIED.tsv:1484535615572033537
+downloaded_tweets_extend_nolf2_REPLIED.tsv:1481688688979587073
+downloaded_tweets_extend_nolf2_REPLIED.tsv:1481685943379804161
+downloaded_tweets_extend_nolf2_REPLIED.tsv:1519913433092608001
+downloaded_tweets_extend_nolf2_REPLIED.tsv:1520028295655575555
+downloaded_tweets_extend_nolf2_REPLIED.tsv:1520027956961284098
+downloaded_tweets_extend_nolf2_REPLIED.tsv:1519752677013569536
+downloaded_tweets_extend_nolf2_REPLIED.tsv:1518929048306597889
+downloaded_tweets_extend_nolf2_REPLIED.tsv:1518744391606845441
+downloaded_tweets_extend_nolf2_REPLIED.tsv:1508508796951445508
+downloaded_tweets_extend_nolf2_REPLIED.tsv:1502660623670382592
+downloaded_tweets_extend_nolf2_REPLIED.tsv:1502368941364162569
+downloaded_tweets_extend_nolf2_REPLIED.tsv:1499743828097572865
+
+There above users are those that have replied to them, around 50 or so.
+
+3- How many of the users who replied to the influential users also got replied to from any other user (at least once)?
+
+]0;jeremiah@sjsu:~[jeremiah@sjsu ~]$ sort userfile| uniq |wc
+     36      36    2376
+
+4- Extract the dates of the replies in format YY-MM-DD and find the top 10 dates on which the most replies happened. 
+
+]0;jeremiah@sjsu:~[jeremiah@sjsu ~]$ awk '{print $3}' downloaded_tweets_extend_nolf2_REPLIED.tsv downloaded_tweets_extend_original_nolf2_REPLIED.tsv | sort | uniq -c | sort -nr -k 1 | head
+    [jeremiah@sjsu ~]$ awk '{print $3}' downloaded_tweets_extend_nolf2_REPLIED.tsv downloaded_tweets_extend_original_nolf2_REPLIED.tsv | sort | uniq -c | sort -nr -k 1 | head
+    254 2022-03-04
+    197 2022-02-23
+    188 2022-02-24
+    180 2022-02-04
+    159 2022-02-18
+    158 2022-04-08
+    149 2022-03-25
+    147 2022-03-11
+    143 2022-04-23
+    132 2022-02-26
+
+5- Repeat what you did in worksheets 7 and 8 to find the most frequent words (not considering stopwords) in the tweet text (last column) for those users. Which words are the most frequent in that tweet text? Are they what you expected based on the frequent hashtags from previous assignments?
+
+The most frequent words are below, i did not expect these words.
+
+[jeremiah@sjsu ~]$ grep replied_to downloaded_tweets_extend_nolf2.tsv downloaded_tweets_extend_original_nolf2.tsv| head | sed -e 's/[^[:alpha:]]/ /g' | tr '\n' " " |  tr -s " " | tr " " '\n'| tr 'A-Z' 'a-z' | sort | uniq -c | sort -nr | nl
+     1       17 to
+     2       13 the
+     3       13 i
+     4       10 type
+     5       10 tweets
+     6       10 tsv
+     7       10 replied
+     8       10 referencedtweet
+     9       10 nolf
+    10       10 id
+    11       10 extend
+    12       10 downloaded
+    13        8 of
+    14        7 it
+    15        6 this
+    16        6 t
+    17        6 my
+    18        6 amp
+    19        6 a
+    20        5 was
+    21        5 s
+    22        5 or
+    23        5 lc
+    24        5 is
+    25        4 exercise
+    26        4 covid
+    27        3 will
+    28        3 thoughts
+    29        3 see
+    30        3 over
+    31        3 in
+    32        3 from
+    33        3 be
+    34        2 would
+    35        2 while
+    36        2 week
+    37        2 we
+    38        2 want
+    39        2 very
+    40        2 ve
+    41        2 u
+    42        2 total
+    43        2 tired
+    44        2 that
+    45        2 takingabreak
+    46        2 still
+    47        2 some
+    48        2 should
+    49        2 rather
+    50        2 r
+    51        2 out
+    52        2 not
+    53        2 noreasonforviolence
+    54        2 mythoughts
+    55        2 mybigfatgreekwedding
+    56        2 more
+    57        2 me
+    58        2 m
+    59        2 latenightthoughts
+    60        2 keep
+    61        2 green
+    62        2 get
+    63        2 full
+    64        2 for
+    65        2 endthisnightmare
+    66        2 don
+    67        2 doesn
+    68        2 democracy
+    69        2 can
+    70        2 but
+    71        2 buddhism
+    72        2 been
+    73        2 beauty
+    74        2 authenticchinesefood
+    75        2 as
+    76        2 and
+    77        1 yourself
+    78        1 you
+    79        1 yoga
+    80        1 yield
+    81        1 xut
+    82        1 x
+    83        1 writing
+    84        1 workouts
+    85        1 won
+    86        1 wo
+    87        1 when
+    88        1 water
+    89        1 w
+    90        1 vote
+    91        1 vibrant
+    92        1 ur
+    93        1 too
+    94        1 tiny
+    95        1 times
+    96        1 time
+    97        1 thought
+    98        1 think
+    99        1 thing
+   100        1 they
+   101        1 there
+   102        1 than
+   103        1 take
+   104        1 tad
+   105        1 switch
+   106        1 sure
+   107        1 stick
+   108        1 spreading
+   109        1 spared
+   110        1 something
+   111        1 softer
+   112        1 soft
+   113        1 so
+   114        1 sleep
+   115        1 sigh
+   116        1 she
+   117        1 self
+   118        1 sauce
+   119        1 said
+   120        1 rude
+   121        1 rrrrrr
+   122        1 right
+   123        1 rheumatologist
+   124        1 removal
+   125        1 remember
+   126        1 remains
+   127        1 religious
+   128        1 rejection
+   129        1 regular
+   130        1 re
+   131        1 pure
+   132        1 prefer
+   133        1 please
+   134        1 picture
+   135        1 persistence
+   136        1 persevered
+   137        1 pan
+   138        1 pain
+   139        1 our
+   140        1 orange
+   141        1 onions
+   142        1 one
+   143        1 on
+   144        1 ok
+   145        1 offensive
+   146        1 now
+   147        1 nor
+   148        1 niavardalos
+   149        1 news
+   150        1 mulling
+   151        1 most
+   152        1 minions
+   153        1 maybe
+   154        1 make
+   155        1 lots
+   156        1 ll
+   157        1 life
+   158        1 lies
+   159        1 level
+   160        1 just
+   161        1 jokes
+   162        1 inflammation
+   163        1 infected
+   164        1 induced
+   165        1 if
+   166        1 humanity
+   167        1 hubby
+   168        1 https
+   169        1 ht
+   170        1 how
+   171        1 hoping
+   172        1 hopefully
+   173        1 hold
+   174        1 his
+   175        1 him
+   176        1 hell
+   177        1 heart
+   178        1 he
+   179        1 have
+   180        1 has
+   181        1 hard
+   182        1 happy
+   183        1 happier
+   184        1 happened
+   185        1 handled
+   186        1 guess
+   187        1 great
+   188        1 gotama
+   189        1 goodnight
+   190        1 gong
+   191        1 go
+   192        1 future
+   193        1 fun
+   194        1 frenzy
+   195        1 freaky
+   196        1 followed
+   197        1 films
+   198        1 fear
+   199        1 favorite
+   200        1 far
+   201        1 family
+   202        1 falling
+   203        1 event
+   204        1 enjoy
+   205        1 end
+   206        1 empathy
+   207        1 embraced
+   208        1 doj
+   209        1 diplomatically
+   210        1 dark
+   211        1 country
+   212        1 cooked
+   213        1 cook
+   214        1 congrats
+   215        1 concerning
+   216        1 concern
+   217        1 comprrrrrrion
+   218        1 coated
+   219        1 co
+   220        1 chow
+   221        1 chi
+   222        1 cause
+   223        1 by
+   224        1 brings
+   225        1 both
+   226        1 bits
+   227        1 biking
+   228        1 believing
+   229        1 believe
+   230        1 bc
+   231        1 bad
+   232        1 away
+   233        1 asleep
+   234        1 appt
+   235        1 approach
+   236        1 any
+   237        1 answers
+   238        1 annoy
+   239        1 annihilation
+   240        1 anger
+   241        1 ample
+   242        1 amazing
+   243        1 am
+   244        1 all
+   245        1 again
+   246        1 after
+   247        1 add
+   248        1 accountable
+   249        1 abt
+[jeremiah@sjsu ~]$ exit
+
